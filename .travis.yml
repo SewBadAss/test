@@ -6,3 +6,11 @@ script:
  - docker build -t jhowland/node .
  - docker images jhowland/node
  
+before_deploy:
+     - docker login -u jhowland -p DH4445
+     
+deploy:
+    provider: script
+    script: docker push jhowland/node
+    on:
+        branch: master
